@@ -22,7 +22,15 @@ module.exports = {
     },
 
     resolve: {
-     extensions: [ '', '.js', '.json', '.jsx', '.es6', '.babel', '.node'],
+     extensions: [
+      '',
+      '.js',
+      '.json',
+      '.jsx',
+      '.es6',
+      '.babel',
+      '.node'
+    ]
   },
 
 
