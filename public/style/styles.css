@@ -1,0 +1,24 @@
+.task_wrapprer{
+
+	display: flex;
+	
+	justify-content: space-around;
+}
+
+.columns{
+	width:200px;
+	height:500px;
+	
+	}
+
+
+.tiles{
+	
+	margin-top: 30px;
+
+
+}
+
+.tiles div{
+	text-align: center;
+}
