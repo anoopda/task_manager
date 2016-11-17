@@ -1,24 +1,52 @@
-.task_wrapprer{
+* {
+	user-select: none;
+}
 
+.task_wrapprer{
 	display: flex;
-	
-	justify-content: space-around;
+	flex-wrap: nowrap;
+	justify-content: flex-start;
+	align-items: flex-start;
+	width: 100%;
+	height: 100%;
 }
 
 .columns{
-	width:200px;
-	height:500px;
-	
-	}
+	position:relative;
+	align-self: flex-start;
+	padding: 10px 0;
+	position: relative;
+	height: 100%;
+}
 
+.task_wrapprer .columns:not(:first-child) {
+	padding-left: 10px;
+}
+
+.task_wrapprer .columns:not(:last-child) {
+	padding-right: 10px; 
+}
+
+
+.myclass {
+	position: relative;
+	z-index: 3;
+	background: #fff;
+}
+
+.wrapper {
+	position: absolute;
+	left: 10px;
+	right: 10px;
+	top: 100px;
+	bottom: 0px;
+	height: 100%;
+
+}
 
 .tiles{
-	
-	margin-top: 30px;
-
-
+	margin-top: 10px;
+	float: left;
 }
 
-.tiles div{
-	text-align: center;
-}
+

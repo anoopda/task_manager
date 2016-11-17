@@ -32968,6 +32968,147 @@
 /* 179 */
 /***/ function(module, exports, __webpack_require__) {
 
+	/* WEBPACK VAR INJECTION */(function(console) {'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactDom = __webpack_require__(40);
+
+	var _reactDom2 = _interopRequireDefault(_reactDom);
+
+	var _jquery = __webpack_require__(178);
+
+	var _jquery2 = _interopRequireDefault(_jquery);
+
+	var _cards = __webpack_require__(180);
+
+	var _cards2 = _interopRequireDefault(_cards);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var IScroll = __webpack_require__(181);
+
+	var Card = function Card(_ref) {
+		var id = _ref.id;
+		var version = _ref.version;
+		var content = _ref.content;
+
+		return _react2.default.createElement(_cards2.default, { id: id, version: version, content: content });
+	};
+
+	var Column = function (_React$Component) {
+		_inherits(Column, _React$Component);
+
+		function Column(props) {
+			_classCallCheck(this, Column);
+
+			var _this = _possibleConstructorReturn(this, (Column.__proto__ || Object.getPrototypeOf(Column)).call(this, props));
+
+			_this.node = undefined;
+			_this.iscroll = undefined;
+
+			_this.state = {
+				contentHeight: 0
+			};
+			return _this;
+		}
+
+		_createClass(Column, [{
+			key: 'componentWillMount',
+			value: function componentWillMount() {
+				this.setState({
+					contentHeight: this.props.data.length * 200 + 10
+				});
+			}
+		}, {
+			key: 'componentDidMount',
+			value: function componentDidMount() {
+				this.iscroll = new IScroll(this.node, {
+					mouseWheel: true,
+					scrollbars: true,
+					disableMouse: true
+
+				});
+			}
+		}, {
+			key: 'componentWillUnmount',
+			value: function componentWillUnmount() {
+				this.iscroll.destroy();
+			}
+		}, {
+			key: 'render',
+			value: function render() {
+				var _this2 = this;
+
+				var _props = this.props;
+				var id = _props.id;
+				var name = _props.name;
+				var data = _props.data;
+
+
+				return _react2.default.createElement(
+					'div',
+					{ className: 'columns', id: id },
+					_react2.default.createElement(
+						'h2',
+						{ className: 'myclass mdl-card__title mdl-card__title-text' },
+						name
+					),
+					_react2.default.createElement(
+						'div',
+						{ className: 'wrapper', ref: function ref(node) {
+								return _this2.node = node;
+							}, onDrop: this.drop, onDragOver: this.allowDrop },
+						_react2.default.createElement(
+							'div',
+							{ className: 'scroller', style: { height: this.state.contentHeight } },
+							data.map(function (item, index) {
+								return _react2.default.createElement(Card, { key: index, id: item.id, version: item.version, content: item.content });
+							})
+						)
+					)
+				);
+			}
+		}, {
+			key: 'allowDrop',
+			value: function allowDrop(e) {
+				console.log("allow drop");
+				e.preventDefault();
+			}
+		}, {
+			key: 'drop',
+			value: function drop(e) {
+				e.preventDefault();
+				var data = e.dataTransfer.getData("text");
+				e.target.appendChild(document.getElementById(data));
+				console.log("drop");
+			}
+		}]);
+
+		return Column;
+	}(_react2.default.Component);
+
+	exports.default = Column;
+	/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(12)))
+
+/***/ },
+/* 180 */
+/***/ function(module, exports, __webpack_require__) {
+
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
@@ -32996,73 +33137,55 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	var IScroll = __webpack_require__(180);
+	var Cards = function (_React$Component) {
+		_inherits(Cards, _React$Component);
 
-	var Column = function (_React$Component) {
-		_inherits(Column, _React$Component);
+		function Cards() {
+			_classCallCheck(this, Cards);
 
-		function Column() {
-			_classCallCheck(this, Column);
-
-			return _possibleConstructorReturn(this, (Column.__proto__ || Object.getPrototypeOf(Column)).apply(this, arguments));
+			return _possibleConstructorReturn(this, (Cards.__proto__ || Object.getPrototypeOf(Cards)).apply(this, arguments));
 		}
 
-		_createClass(Column, [{
-			key: 'componentDidUpdate',
-			value: function componentDidUpdate() {
-
-				var wrapper = this.refs.scroll;
-				var myScroll = new IScroll(wrapper, {
-					mouseWheel: true,
-					scrollbars: true
-				});
-			}
-		}, {
+		_createClass(Cards, [{
 			key: 'render',
 			value: function render() {
 
-				var arr = this.props.data;
-
 				return _react2.default.createElement(
 					'div',
-					{ className: 'columns', ref: 'scroll', id: this.props.id },
+					{ className: ' tiles mdl-card  mdl-card--border through mdl-shadow--16dp mdl-card__supporting-text mdl-card__actions',
+						id: this.props.id,
+						draggable: 'true', onDragStart: this.drag },
 					_react2.default.createElement(
-						'h2',
-						{ className: ' mdl-card__title mdl-card__title-text' },
-						this.props.name
+						'div',
+						null,
+						this.props.id
 					),
-					arr.map(function (value, key) {
-						return _react2.default.createElement(
-							'div',
-							{ className: ' tiles mdl-card  mdl-card--border mdl-shadow--2dp through mdl-shadow--16dp mdl-card__supporting-text mdl-card__actions', id: value.id, key: key },
-							_react2.default.createElement(
-								'div',
-								null,
-								value.id
-							),
-							_react2.default.createElement(
-								'div',
-								null,
-								value.version
-							),
-							_react2.default.createElement(
-								'div',
-								null,
-								value.content
-							)
-						);
-					})
+					_react2.default.createElement(
+						'div',
+						null,
+						this.props.version
+					),
+					_react2.default.createElement(
+						'div',
+						null,
+						this.props.content
+					)
 				);
+			}
+		}, {
+			key: 'drag',
+			value: function drag(e) {
+				e.dataTransfer.setData("text", e.target.id);
 			}
 		}]);
 
-		return Column;
+		return Cards;
 	}(_react2.default.Component);
 
-	exports.default = Column;
+	exports.default = Cards;
 
 /***/ },
-/* 180 */
+/* 181 */
 /***/ function(module, exports, __webpack_require__) {
 
 	var __WEBPACK_AMD_DEFINE_RESULT__;/*! iScroll v5.2.0 ~ (c) 2008-2016 Matteo Spinelli ~ http://cubiq.org/license */
